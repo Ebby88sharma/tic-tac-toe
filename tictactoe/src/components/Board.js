@@ -38,10 +38,28 @@ const Board = () => {
 
     if (emptyCells.length === 0) return; // No moves available
 
+    // Check if AI can block the player
+    for (let combination of winningCombinations) {
+      const [a, b, c] = combination;
+      const line = [cells[a], cells[b], cells[c]];
+
+      // Check if the player is about to win
+      if (line.filter((cell) => cell === "X").length === 2 && line.includes(null)) {
+        const blockIndex = combination[line.indexOf(null)];
+        const newCells = [...cells];
+        newCells[blockIndex] = "O";
+        setCells(newCells);
+        if (!checkWinner(newCells)) {
+          setCurrentPlayer("X");
+        }
+        return;
+      }
+    }
+
+    // No blocking needed, make a random move
     const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
     const newCells = [...cells];
     newCells[randomIndex] = "O";
-
     setCells(newCells);
     if (!checkWinner(newCells)) {
       setCurrentPlayer("X");
