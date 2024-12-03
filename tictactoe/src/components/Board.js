@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Cell from "./Cell";
 import WinnerMessage from "./WinnerMessage";
 
@@ -23,23 +23,49 @@ const Board = () => {
       const [a, b, c] = combination;
       if (newCells[a] && newCells[a] === newCells[b] && newCells[a] === newCells[c]) {
         setWinner(newCells[a]);
-        return;
+        return true;
       }
     }
     if (newCells.every((cell) => cell !== null)) {
       setWinner("Draw");
+      return true;
+    }
+    return false;
+  };
+
+  const computerMove = () => {
+    const emptyCells = cells.map((cell, index) => (cell === null ? index : null)).filter((index) => index !== null);
+
+    if (emptyCells.length === 0) return; // No moves available
+
+    const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+    const newCells = [...cells];
+    newCells[randomIndex] = "O";
+
+    setCells(newCells);
+    if (!checkWinner(newCells)) {
+      setCurrentPlayer("X");
     }
   };
 
   const handleClick = (index) => {
-    if (cells[index] || winner) return;
+    if (cells[index] || winner || currentPlayer === "O") return;
 
     const newCells = [...cells];
-    newCells[index] = currentPlayer;
+    newCells[index] = "X";
     setCells(newCells);
-    checkWinner(newCells);
-    setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
+
+    if (!checkWinner(newCells)) {
+      setCurrentPlayer("O");
+    }
   };
+
+  useEffect(() => {
+    if (currentPlayer === "O" && !winner) {
+      const timer = setTimeout(computerMove, 500); // Delay for AI realism
+      return () => clearTimeout(timer);
+    }
+  }, [currentPlayer]);
 
   const restartGame = () => {
     setCells(Array(9).fill(null));
