@@ -20,7 +20,8 @@ A classic Tic Tac Toe game built with React, featuring a **Player vs AI** mode. 
 ## Live Demo
 Play the game live here: [Tic Tac Toe on Vercel](https://tictactoe-oyre3o1q2-ebby88sharmas-projects.vercel.app/)
 
-## Github Link - [Github](https://github.com/Ebby88sharma/tic-tac-toe)
+## Github Link
+[Github](https://github.com/Ebby88sharma/tic-tac-toe)
 ---
 
 ## Technologies Used
