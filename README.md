@@ -1,35 +1,50 @@
-# Getting Started with Create React App
+# Tic Tac Toe with Smart AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A classic Tic Tac Toe game built with React, featuring a **Player vs AI** mode. The AI is designed to block the player from winning and make intelligent moves, providing an engaging and competitive experience.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
+- **Interactive Gameplay**: Play against an AI or restart the game anytime.
+- **Responsive Design**: Fully responsive game board that works on desktop and mobile devices.
+- **AI Logic**:
+  - Blocks the player’s winning moves.
+  - Makes random moves when blocking isn’t necessary.
+- **Winner Detection**:
+  - Detects wins for both the player and the AI.
+  - Identifies draw conditions when no valid moves remain.
+- **Restart Button**: Easily restart the game and play again.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Live Demo
+Play the game live here: [Tic Tac Toe on Vercel](https://tictactoe-oyre3o1q2-ebby88sharmas-projects.vercel.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Github Link - [Github](https://github.com/Ebby88sharma/tic-tac-toe)
+---
 
-### `npm test`
+## Technologies Used
+- **React**: For building the user interface and managing game state.
+- **CSS**: For responsive and visually appealing design.
+- **Vercel**: For deployment and hosting.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-
-
-
+```plaintext
+.
+├── public/
+│   └── index.html              # Main HTML file
+├── src/
+│   ├── components/
+│   │   ├── Board.js            # Main game logic and AI implementation
+│   │   ├── Cell.js             # Individual cell component
+│   │   └── WinnerMessage.js    # Displays winner or draw message
+│   ├── App.js                  # Main app component
+│   ├── index.js                # React entry point
+│   └── styles.css              # Styling file
+├── .gitignore                  # Git ignore file
+├── package.json                # Project configuration
+├── package-lock.json           # Lock file for dependencies
+└── README.md                   # Documentation
